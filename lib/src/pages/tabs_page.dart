@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:newsapp_provider/src/pages/pages.dart'; 
 import 'package:provider/provider.dart';
 
 
@@ -50,12 +51,11 @@ class _Paginas extends StatelessWidget {
       // physics: const BouncingScrollPhysics(),
       physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
-        Container(
-          color: Colors.red,
-        ),
-        Container(
-          color: Colors.green,
-        )
+        
+        Tab1Page(),
+
+        Tab2Page(),
+
       ],
     );
   }
