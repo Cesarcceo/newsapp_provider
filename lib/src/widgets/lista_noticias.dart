@@ -141,7 +141,7 @@ class _TarjetaBotones extends StatelessWidget {
     
         RawMaterialButton(
           onPressed: () {},
-          fillColor: Colors.red,
+          fillColor: Colors.indigo,
           shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20)),
           child: const Icon(Icons.more),
         ),
