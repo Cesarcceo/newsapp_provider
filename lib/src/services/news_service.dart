@@ -7,6 +7,8 @@ import 'package:newsapp_provider/src/models/models.dart';
 class NewsService with ChangeNotifier {
 
   List<Article> headlines = [];
+  List<Article> x= [];
+  String _selectedCategory= 'business';
 
   List<Category> categories = [
     Category(icon: FontAwesomeIcons.building, name: 'business'),
@@ -18,6 +20,8 @@ class NewsService with ChangeNotifier {
     Category(icon: FontAwesomeIcons.memory, name: 'technology'),
   ];
 
+  Map<String, List<Article>> categoryArticles = {};
+
   final String _urslNews ='newsapi.org';
   final String _apiKey ='fe63f44e04044c2bb5c0ee0f8e0e0b9c';
   final String _country ='mx';
@@ -25,6 +29,18 @@ class NewsService with ChangeNotifier {
 
   NewsService() {
     getTopHeadLines();
+
+    categories.forEach((element) {
+      categoryArticles[element.name] = x;
+    });
+  }
+
+  String get selectedCategory => _selectedCategory;
+  set selectedCategory (String valor){
+    _selectedCategory = valor;
+
+    getArticlesByCategory(valor);
+    notifyListeners();
   }
 
   getTopHeadLines() async {
@@ -37,6 +53,24 @@ class NewsService with ChangeNotifier {
     final newsResponse = NewsResponse.fromRawJson(resp.body);
     headlines.addAll(newsResponse.articles);
 
+    notifyListeners();
+  }
+
+  getArticlesByCategory( String category ) async {
+
+
+    if (categoryArticles[category]!.length > 0){
+      return categoryArticles[category];
+    }
+    final url = Uri.https(_urslNews, '/v2/top-headlines', {
+      'apiKey': _apiKey,
+      'country': _country,
+      'category': _selectedCategory,
+    });
+    final resp = await http.get(url);
+
+    final newsResponse = NewsResponse.fromRawJson(resp.body);
+    categoryArticles[category]!.addAll(newsResponse.articles);
     notifyListeners();
   }
 }
