@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp_provider/src/services/news_service.dart';
-import 'package:newsapp_provider/src/widgets/lista_noticias.dart';
 import 'package:provider/provider.dart';
+
+import 'package:newsapp_provider/src/services/news_service.dart';
+import 'package:newsapp_provider/src/widgets/widgets.dart';
 
 
 class Tab1Page extends StatelessWidget {
