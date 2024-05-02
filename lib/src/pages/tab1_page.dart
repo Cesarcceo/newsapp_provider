@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp_provider/src/services/news_service.dart';
+import 'package:newsapp_provider/src/widgets/lista_noticias.dart';
 import 'package:provider/provider.dart';
 
 
@@ -12,9 +13,7 @@ class Tab1Page extends StatelessWidget {
     final newsService = Provider.of<NewsService>(context);
 
     return Scaffold(
-      body: Center(
-        child: Text('Hola Mundo'),
-     ),
+      body: ListaNoticias(noticias: newsService.headlines),
    );
   }
 }
