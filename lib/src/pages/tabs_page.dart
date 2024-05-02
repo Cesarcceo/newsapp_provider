@@ -52,9 +52,9 @@ class _Paginas extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
         
-        Tab1Page(),
-
         Tab2Page(),
+
+        Tab1Page(),
 
       ],
     );

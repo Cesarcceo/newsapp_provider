@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:newsapp_provider/src/models/models.dart';
@@ -6,6 +7,16 @@ import 'package:newsapp_provider/src/models/models.dart';
 class NewsService with ChangeNotifier {
 
   List<Article> headlines = [];
+
+  List<Category> categories = [
+    Category(icon: FontAwesomeIcons.building, name: 'business'),
+    Category(icon: FontAwesomeIcons.tv, name: 'entertainment'),
+    Category(icon: FontAwesomeIcons.addressCard, name: 'general'),
+    Category(icon: FontAwesomeIcons.headSideVirus, name: 'health'),
+    Category(icon: FontAwesomeIcons.vials, name: 'science'),
+    Category(icon: FontAwesomeIcons.volleyball, name: 'sports'),
+    Category(icon: FontAwesomeIcons.memory, name: 'technology'),
+  ];
 
   final String _urslNews ='newsapi.org';
   final String _apiKey ='fe63f44e04044c2bb5c0ee0f8e0e0b9c';
