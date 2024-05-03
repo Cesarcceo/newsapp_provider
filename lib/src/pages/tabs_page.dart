@@ -50,11 +50,11 @@ class _Paginas extends StatelessWidget {
       controller: navegacionModel.pageController,
       // physics: const BouncingScrollPhysics(),
       physics: const NeverScrollableScrollPhysics(),
-      children: <Widget>[
+      children: const [
         
-        Tab2Page(),
-
         Tab1Page(),
+
+        Tab2Page(),
 
       ],
     );

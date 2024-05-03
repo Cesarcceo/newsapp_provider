@@ -7,7 +7,6 @@ import 'package:newsapp_provider/src/models/models.dart';
 class NewsService with ChangeNotifier {
 
   List<Article> headlines = [];
-  List<Article> x= [];
   String _selectedCategory= 'business';
 
   List<Category> categories = [
@@ -31,17 +30,19 @@ class NewsService with ChangeNotifier {
     getTopHeadLines();
 
     categories.forEach((element) {
-      categoryArticles[element.name] = x;
+      categoryArticles[element.name] = List.empty(growable: true);
     });
   }
 
   String get selectedCategory => _selectedCategory;
-  set selectedCategory (String valor){
+  set selectedCategory (dynamic valor){
     _selectedCategory = valor;
 
     getArticlesByCategory(valor);
     notifyListeners();
   }
+
+  List<Article>? get getArticulosCategotriaSeleccionada => categoryArticles[selectedCategory]!;
 
   getTopHeadLines() async {
     final url = Uri.https(_urslNews, '/v2/top-headlines', {
@@ -57,7 +58,6 @@ class NewsService with ChangeNotifier {
   }
 
   getArticlesByCategory( String category ) async {
-
 
     if (categoryArticles[category]!.length > 0){
       return categoryArticles[category];
